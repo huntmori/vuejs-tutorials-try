@@ -7,8 +7,9 @@
 /dataSources/
 /dataSources.local.xml
 
-basics-01-starting-code\.idea\basics-01-starting-code.iml 
-basics-01-starting-code\.idea\gbrowsers.xml
-basics-01-starting-code\.idea\modules.xml
-basics-01-starting-code\.idea\vcs.xml
-basics-01-starting-code\.idea\workspace.xml
+basics-01-starting-code/.idea/.gitignore
+basics-01-starting-code/.idea/basics-01-starting-code.iml 
+basics-01-starting-code/.idea/gbrowsers.xml
+basics-01-starting-code/.idea/modules.xml
+basics-01-starting-code/.idea/vcs.xml
+basics-01-starting-code/.idea/workspace.xml
