@@ -9,19 +9,18 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
-    <script src="vue_global.js" defer></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js" defer></script>
     <script src="app.js" defer></script>
   </head>
   <body>
     <header>
-      <h1>Vue Course Goals</h1>
+      <h1>Vue Events</h1>
     </header>
-    <section id="user-goal">
-      <h2 >My Course Goal</h2>
-      <p> {{ outputGoal() }}</p>
-      <p v-html="outputGoal()"></p>
-      <p> Learn more <a v-bind:href="vueLink">about Vue</a></p>
-      <p>Learn more <a :href="vueLink" target="_blank" rel="noopener noreferrer">about Vue</a></p>
+    <section id="events">
+      <h2>Events in Action</h2>
+      <button v-on:click="add()">Add</button>
+      <button v-on:click="remove()">Remove</button>
+      <p>Result: {{ counter }}</p>
     </section>
   </body>
 </html>
