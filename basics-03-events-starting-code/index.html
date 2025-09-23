@@ -22,11 +22,27 @@
       <button v-on:click="add(5)">Add 5</button>
       <button v-on:click="remove(1)">Remove</button>
       <button v-on:click="remove(5)">Subtract 5</button>
+      <p>
+        <button v-on:click.right="remove(5)">Subtract via right 5</button>
+      </p>
       <p>Result: {{ counter }}</p>
       <label>
-        <input v-on:input="setName($event, 'Schwarzmuller')" type="text">
+        <input
+          v-on:input="setName($event, 'Schwarzmuller')"
+          v-on:keyup.enter="setConfirmedName($event, 'Schwarzmuller')"
+          type="text"
+        />
       </label>
-      <p> Your Name: {{ name }} </p>
+      <p> Your Name: {{ confirmedName }} </p>
+      <form v-on:submit="submitForm">
+        <input type="text">
+        <button> Sign Up</button>
+      </form>
+      <!--이벤트 수식어-->
+      <form v-on:submit.prevent="submitOnly">
+        <input type="text">
+        <button> Sign Up</button>
+      </form>
     </section>
   </body>
 </html>
