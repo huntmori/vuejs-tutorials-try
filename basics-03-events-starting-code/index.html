@@ -25,6 +25,9 @@
       <p>
         <button v-on:click.right="remove(5)">Subtract via right 5</button>
       </p>
+      <p v-once>
+        Starting Counter {{ counter }}
+      </p>
       <p>Result: {{ counter }}</p>
       <label>
         <input
