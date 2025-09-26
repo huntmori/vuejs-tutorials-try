@@ -6,8 +6,16 @@ const app = Vue.createApp({
     };
   },
   methods: {
-    setName(event, lastName) {
-      this.name = event.target.value/* + ' ' + lastName*/;
+    outputFullName() {
+      /** 페이지에 변화가 생길 시 vue에 의해 매번 재 실행 됨 */
+      console.log('outputFullName');
+      if(this.name === '') {
+        return '';
+      }
+      return this.name + ' ' + 'Schwarzumuller';
+    },
+    setName(event) {
+      this.name = event.target.value;
     },
     add(num) {
       this.counter = this.counter + num;
@@ -20,7 +28,8 @@ const app = Vue.createApp({
       this.counter = 0;
       this.name = '';
     },
-  }
+  },
+
 });
 
 app.mount('#events');
