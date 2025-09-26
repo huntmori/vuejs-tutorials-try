@@ -2,7 +2,9 @@ const app = Vue.createApp({
   data() {
     return {
       counter: 0,
-      name: ''
+      name: '',
+      lastName: '',
+      //fullName: '',
     };
   },
   methods: {
@@ -28,8 +30,36 @@ const app = Vue.createApp({
       if(this.name === '') {
         return '';
       }
-      return this.name + ' ' + 'Schwarzmuller';
+      return this.name + ' ' + this.lastName;
     }
+
+  },
+  watch: {
+    counter(value) {
+      if (value > 50) {
+        const that = this;
+        setTimeout(function() {
+          that.counter = 0;
+        }, 2000);
+      }
+    }
+    /** data.name이 변경될 때 마다 **/
+    // name(value) {
+    //   // value는 name을 참조
+    //   // name(oldvalue, newvalue)형태도 사용 가능
+    //   if (value === '') {
+    //     this.fullName = '';
+    //   } else {
+    //     this.fullName = value + ' ' + this.lastName;
+    //   }
+    // },
+    // lastName(value) {
+    //   if (this.name === '') {
+    //     this.fullName = '';
+    //   } else {
+    //     this.fullName = this.name + ' ' + value;
+    //   }
+    // }
   }
 });
 

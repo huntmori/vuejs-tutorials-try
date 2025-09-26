@@ -27,10 +27,11 @@
            v-bind:value="name"
            v-on:input="setName($event, 'Schwarzmüller')"
         />
-      </label>
+      </label><br>
       <label>
         use v-model
-        <input type="text" v-model="name" />
+        <input type="text" v-model="name" placeholder="name"/>
+        <input type="text" v-model="lastName" placeholder="lastName" />
       </label>
       <!-- 페이지에 변화가 생길 시 vue에 의해 매번 재 실행 됨-->
       <p>Your Name: {{ fullName }}</p>
