@@ -33,7 +33,7 @@
         <input type="text" v-model="name" />
       </label>
       <!-- 페이지에 변화가 생길 시 vue에 의해 매번 재 실행 됨-->
-      <p>Your Name: {{ outputFullName() }}</p>
+      <p>Your Name: {{ fullName }}</p>
       <button v-on:click="resetInput"> Reset Input </button>
     </section>
   </body>

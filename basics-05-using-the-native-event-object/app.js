@@ -6,14 +6,6 @@ const app = Vue.createApp({
     };
   },
   methods: {
-    outputFullName() {
-      /** 페이지에 변화가 생길 시 vue에 의해 매번 재 실행 됨 */
-      console.log('outputFullName');
-      if(this.name === '') {
-        return '';
-      }
-      return this.name + ' ' + 'Schwarzumuller';
-    },
     setName(event) {
       this.name = event.target.value;
     },
@@ -29,7 +21,16 @@ const app = Vue.createApp({
       this.name = '';
     },
   },
-
+  /** vue가 의존성을 인식하고 필요한 경우에만 호출 */
+  computed: {
+    fullName() {
+      console.log('called fullName in computed property');
+      if(this.name === '') {
+        return '';
+      }
+      return this.name + ' ' + 'Schwarzmuller';
+    }
+  }
 });
 
 app.mount('#events');
