@@ -19,22 +19,18 @@
     <section id="styling">
       <div
         class="demo"
-        :class="{
-          active: boxASelected
-        }"
+        :class="boxAClasses"
         @click="boxSelected('A')"
       ></div>
       <div
         class="demo"
-        :class="{
-          active: boxBSelected
-        }"@click="boxSelected('B')"
+        :class="boxBClasses"
+        @click="boxSelected('B')"
       ></div>
       <div
         class="demo"
-        :class="{
-          active: boxCSelected
-        }" @click="boxSelected('C')"
+        :class="boxCClasses"
+        @click="boxSelected('C')"
       ></div>
     </section>
   </body>
