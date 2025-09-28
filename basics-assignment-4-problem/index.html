@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Vue Styling</h1>
+    </header>
+    <section id="assignment">
+      <!-- 1) 사용자 입력을 가져와 CSS 클래스로 사용 -->
+      <!-- 입력된 클래스는 아래 문단에 추가되어야 합니다. -->
+      <input type="text" v-on:keydown.enter="addClass"/>
+      <!-- (available classes: "user1", "user2") -->
+      <p :class="classArray">
+        Style me!
+      </p>
+      <button @click="toggleHidden">Toggle Paragraph</button>
+      <!-- 2) 위 단락을 보이거나 숨기기 위해 "visible" 및 "hidden" 클래스를 사용하십시오. -->
+      <!-- 버튼을 클릭하면 두 옵션 간에 전환됩니다. -->
+
+      <!-- 3) 아래 단락에 동적 인라인 스타일을 추가하고 사용자가 background-color를 입력하도록 합니다. -->
+      <input type="text" v-on:keydown.enter="updateBackgroundColor"/>
+      <p :class="visibleClass" :style="{backgroundColor: backgroundColor}">Style me inline!</p>
+    </section>
+  </body>
+</html>
