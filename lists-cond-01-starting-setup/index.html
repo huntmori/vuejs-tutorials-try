@@ -30,8 +30,18 @@
       <!-- v-show는 랜더링이 되고 css를 통해 숨김-->
       <p v-show="isEmptyGoal">No goals have been added yet - please start adding some!</p>
       <ul v-show="goals.length > 0">
-        <li v-for="goal in goals">
-          {{ goal }}
+        <li v-for="(goal, index) in goals">
+          {{ goal }} - {{ index }}
+        </li>
+      </ul>
+      <ul>
+        <li v-for="(value, key, index) in {name: 'Max', age: 31}">
+          {{ key }} - {{ index }}: {{ value }}
+        </li>
+      </ul>
+      <ul>
+        <li v-for="num in 10">
+          {{ num }}
         </li>
       </ul>
     </section>
