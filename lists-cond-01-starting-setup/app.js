@@ -5,14 +5,15 @@ const app = Vue.createApp({
       enteredValue: ''
     };
   },
-
   methods: {
     addGoal() {
       this.goals.push(this.enteredValue);
       this.enteredValue = '';
+    },
+    removeGoal(index) {
+      this.goals.splice(index, 1);
     }
   },
-
   computed: {
     isEmptyGoal() {
       return this.goals.length === 0;
