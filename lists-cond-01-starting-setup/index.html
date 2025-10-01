@@ -27,6 +27,11 @@
       <p v-else>
         ...
       </p>
+      <!-- v-show는 랜더링이 되고 css를 통해 숨김-->
+      <p v-show="isEmptyGoal">No goals have been added yet - please start adding some!</p>
+      <ul v-show="goals.length > 0">
+        <li>Goal</li>
+      </ul>
     </section>
   </body>
 </html>
