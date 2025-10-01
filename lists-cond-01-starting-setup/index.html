@@ -22,7 +22,7 @@
       <button @click="addGoal">Add Goal</button>
       <p v-if="isEmptyGoal">No goals have been added yet - please start adding some!</p>
       <ul v-else-if="goals.length > 0">
-        <li>Goal</li>
+        <!--li>Goal</li-->
       </ul>
       <p v-else>
         ...
@@ -30,7 +30,9 @@
       <!-- v-show는 랜더링이 되고 css를 통해 숨김-->
       <p v-show="isEmptyGoal">No goals have been added yet - please start adding some!</p>
       <ul v-show="goals.length > 0">
-        <li>Goal</li>
+        <li v-for="goal in goals">
+          {{ goal }}
+        </li>
       </ul>
     </section>
   </body>
