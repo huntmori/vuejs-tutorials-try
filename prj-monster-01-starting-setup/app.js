@@ -15,7 +15,7 @@ const getRandomValue = function(min, max) {
 }
 
 const methods = {
-    increaseRound() {
+    increaseRound: function() {
         this.currentRound++;
 
         this.specialAttackCoolDown--;
@@ -23,24 +23,24 @@ const methods = {
             this.specialAttackCoolDown = 0;
         }
     },
-    attackMonster() {
+    attackMonster: function() {
         this.increaseRound();
         const damage = getRandomValue(5, 12);
         this.monsterHealth -= damage;
         this.attackPlayer()
     },
-    attackPlayer() {
+    attackPlayer: function() {
         const damage = getRandomValue(8, 10);
         this.playerHealth -= damage;
     },
-    specialAttackMonster() {
+    specialAttackMonster: function() {
         this.increaseRound();
         this.specialAttackCoolDown = 3;
         const damage = getRandomValue(10, 25);
         this.monsterHealth -= damage;
         this.attackPlayer();
     },
-    healPlayer() {
+    healPlayer: function() {
         const healAmount = getRandomValue(8, 20);
 
         if(this.playerHealth + healAmount >= this.maxHealth) {
@@ -54,9 +54,11 @@ const methods = {
 }
 
 const appData = {
-    data: () => data,
+    data: function() {
+        return data;
+    },
     methods: methods,
-    watcher: {
+    watch: {
         playerHealth(value) {
             if (value <= 0 && this.monsterHealth <= 0) {
                 //draw
