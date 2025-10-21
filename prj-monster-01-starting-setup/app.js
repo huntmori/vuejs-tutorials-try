@@ -3,7 +3,8 @@ const data = {
     monsterHealth: 100,
     maxHealth: 100,
     currentRound: 0,
-    specialAttackCoolDown: 0
+    specialAttackCoolDown: 0,
+    winner: null,
 };
 
 // javascript에서 만 호출하는 경우 javascript function가능
@@ -55,6 +56,26 @@ const methods = {
 const appData = {
     data: () => data,
     methods: methods,
+    watcher: {
+        playerHealth(value) {
+            if (value <= 0 && this.monsterHealth <= 0) {
+                //draw
+                this.winner = 'draw';
+            } else if(value<=0) {
+                //player lost
+                this.winner = 'monster';
+            }
+        },
+        monsterHealth(value) {
+            if (value <= 0 && this.playerHealth <= 0) {
+                //draw
+                this.winner = 'draw';
+            } else if(value <= 0) {
+                //player win
+                this.winner = 'player';
+            }
+        }
+    },
     computed: {
         monsterBarStyle() {
             return {
@@ -70,6 +91,15 @@ const appData = {
         },
         isEnableSpecialAttack() {
             return this.specialAttackCoolDown !== 0;
+        },
+        isDefeated() {
+            return this.playerHealth <= 0  && this.monsterHealth >= 0;
+        },
+        isWin() {
+            return this.monsterHealth <= 0 && this.playerHealth >= 0;
+        },
+        isDraw() {
+            return this.monsterHealth <= 0 && this.playerHealth <= 0;
         }
     }
 };

@@ -18,7 +18,7 @@
     </header>
     <div id="game">
       <section id="round">
-        Round {{ currentRound }}
+        Round {{ currentRound+1 }}
       </section>
       <section id="monster" class="container">
         <h2>Monster Health</h2>
@@ -36,6 +36,12 @@
           </div>
         </div>
       </section>
+      <section class="container" v-if="playerHealth <= 0 || monsterHealth <= 0">
+        <h2> GameOver! </h2>
+        <h3 v-if="isDefeated"> you lost</h3>
+        <h3 v-else-if="isWin"> you win</h3>
+        <h3 v-else> it's a draw</h3>
+      </section>
       <section id="controls">
         <button @click="attackMonster">ATTACK</button>
         <button
@@ -48,7 +54,17 @@
       </section>
       <section id="log" class="container">
         <h2>Battle Log</h2>
-        <ul></ul>
+        <ul>
+          <li v-if="isWin">
+            you win
+          </li>
+          <li v-if="isDefeated">
+            you loose
+          </li>
+          <li v-if="isDraw">
+            draw
+          </li>
+        </ul>
       </section>
     </div>
   </body>
