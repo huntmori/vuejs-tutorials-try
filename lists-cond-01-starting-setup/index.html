@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+  <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,7 +18,9 @@
     </header>
     <section id="user-goals">
       <h2>My course goals</h2>
-      <input type="text" v-model="enteredValue"/>
+      <label>
+        <input type="text" v-model="enteredValue"/>
+      </label>
       <button @click="addGoal">Add Goal</button>
       <p v-if="isEmptyGoal">No goals have been added yet - please start adding some!</p>
       <ul v-else-if="goals.length > 0">

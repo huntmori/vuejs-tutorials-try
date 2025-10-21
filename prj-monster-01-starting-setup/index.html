@@ -20,13 +20,17 @@
       <section id="monster" class="container">
         <h2>Monster Health</h2>
         <div class="healthbar">
-          <div class="healthbar__value">{{monsterHealth}}</div>
+          <div class="healthbar__value" :style="monsterBarStyle">
+            {{monsterHealth}} / {{maxHealth}}
+          </div>
         </div>
       </section>
       <section id="player" class="container">
         <h2>Your Health</h2>
         <div class="healthbar">
-          <div class="healthbar__value">{{playerHealth}}</div>
+          <div class="healthbar__value" :style="playerBarStyle">
+            {{playerHealth}} / {{maxHealth}}
+          </div>
         </div>
       </section>
       <section id="controls">

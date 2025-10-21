@@ -1,7 +1,7 @@
 const data = {
     playerHealth: 100,
     monsterHealth: 100,
-
+    maxHealth: 100
 };
 
 // javascript에서 만 호출하는 경우 javascript function가능
@@ -26,6 +26,19 @@ const methods = {
 const appData = {
     data: () => data,
     methods: methods,
+    computed: {
+        monsterBarStyle() {
+            return {
+                width: this.monsterHealth
+                        / this.maxHealth * 100 + '%'
+            };
+        },
+        playerBarStyle() {
+            return {
+                width: this.playerHealth / this.maxHealth * 100 + '%'
+            };
+        }
+    }
 };
 
 const app = Vue.createApp(appData);
