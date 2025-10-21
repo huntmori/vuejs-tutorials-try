@@ -38,6 +38,17 @@ const methods = {
         const damage = getRandomValue(10, 25);
         this.monsterHealth -= damage;
         this.attackPlayer();
+    },
+    healPlayer() {
+        const healAmount = getRandomValue(8, 20);
+
+        if(this.playerHealth + healAmount >= this.maxHealth) {
+            this.playerHealth = this.maxHealth;
+        } else {
+            this.playerHealth += healAmount;
+        }
+        this.attackPlayer();
+        this.increaseRound();
     }
 }
 
