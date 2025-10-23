@@ -5,6 +5,7 @@ const data = {
     currentRound: 0,
     specialAttackCoolDown: 0,
     winner: null,
+    logMessages: []
 };
 
 // javascript에서 만 호출하는 경우 javascript function가능
@@ -27,10 +28,12 @@ const methods = {
         this.increaseRound();
         const damage = getRandomValue(5, 12);
         this.monsterHealth -= damage;
+        this.addLogMessage('player', 'attack', damage);
         this.attackPlayer()
     },
     attackPlayer: function() {
         const damage = getRandomValue(8, 10);
+        this.addLogMessage('monster', 'attack', damage);
         this.playerHealth -= damage;
     },
     specialAttackMonster: function() {
@@ -38,6 +41,7 @@ const methods = {
         this.specialAttackCoolDown = 3;
         const damage = getRandomValue(10, 25);
         this.monsterHealth -= damage;
+        this.addLogMessage('player','special attack', damage);
         this.attackPlayer();
     },
     healPlayer: function() {
@@ -49,6 +53,7 @@ const methods = {
             this.playerHealth += healAmount;
         }
         this.attackPlayer();
+        this.addLogMessage('player', 'heal', healAmount);
         this.increaseRound();
     },
     startNewGame: function() {
@@ -57,9 +62,17 @@ const methods = {
         this.playerHealth = 100;
         this.monsterHealth = 100;
         this.winner = null;
+        this.logMessages = [];
     },
     surrender: function() {
         this.winner = 'monster';
+    },
+    addLogMessage: function(who, what, value) {
+        this.logMessages.unshift({
+            actionBy: who,
+            actionType: what,
+            actionValue: value
+        });
     }
 }
 
