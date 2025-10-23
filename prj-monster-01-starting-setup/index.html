@@ -36,17 +36,23 @@
           </div>
         </div>
       </section>
-      <section class="container" v-if="playerHealth <= 0 || monsterHealth <= 0">
+      <section class="container" v-if="isGameOver">
         <h2> GameOver! {{winner}}</h2>
         <h3 v-if="isDefeated"> you lost</h3>
         <h3 v-else-if="isWin"> you win</h3>
         <h3 v-else> it's a draw</h3>
+        <Button @click="startNewGame">
+          Start New Game
+        </Button>
       </section>
-      <section class="container" v-if="winner">
+      <section class="container" v-if="isGameOver && false">
         <h2> Game Over!!</h2>
         <h3> {{ winner }} won the game</h3>
+        <Button @click="startNewGame">
+          Start New Game
+        </Button>
       </section>
-      <section id="controls">
+      <section id="controls" v-if="!isGameOver">
         <button @click="attackMonster">ATTACK</button>
         <button
           :disabled="isEnableSpecialAttack"
@@ -54,7 +60,7 @@
           SPECIAL ATTACK ({{ specialAttackCoolDown }})
         </button>
         <button @click="healPlayer">HEAL</button>
-        <button>SURRENDER</button>
+        <button @click="surrender">SURRENDER</button>
       </section>
       <section id="log" class="container">
         <h2>Battle Log</h2>

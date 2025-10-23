@@ -50,6 +50,16 @@ const methods = {
         }
         this.attackPlayer();
         this.increaseRound();
+    },
+    startNewGame: function() {
+        this.currentRound = 0;
+        this.specialAttackCoolDown = 0;
+        this.playerHealth = 100;
+        this.monsterHealth = 100;
+        this.winner = null;
+    },
+    surrender: function() {
+        this.winner = 'monster';
     }
 }
 
@@ -63,18 +73,22 @@ const appData = {
             if (value <= 0 && this.monsterHealth <= 0) {
                 //draw
                 this.winner = 'draw';
+                this.playerHealth = 0;
             } else if(value<=0) {
                 //player lost
                 this.winner = 'monster';
+                this.playerHealth = 0;
             }
         },
         monsterHealth(value) {
             if (value <= 0 && this.playerHealth <= 0) {
                 //draw
                 this.winner = 'draw';
+                this.monsterHealth = 0;
             } else if(value <= 0) {
                 //player win
                 this.winner = 'player';
+                this.monsterHealth = 0;
             }
         }
     },
@@ -95,13 +109,27 @@ const appData = {
             return this.specialAttackCoolDown !== 0;
         },
         isDefeated() {
+            if(this.winner === 'monster') {
+                return true;
+            }
             return this.playerHealth <= 0  && this.monsterHealth >= 0;
         },
         isWin() {
+            if (this.winner === 'player') {
+                return true;
+            }
             return this.monsterHealth <= 0 && this.playerHealth >= 0;
         },
         isDraw() {
+            if (this.winner==='draw') {
+                return true;
+            }
             return this.monsterHealth <= 0 && this.playerHealth <= 0;
+        },
+        isGameOver() {
+            return this.winner !== null
+                || this.playerHealth <= 0
+                || this.monsterHealth <= 0;
         }
     }
 };
