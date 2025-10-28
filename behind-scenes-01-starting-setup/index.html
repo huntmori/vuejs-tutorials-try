@@ -10,7 +10,7 @@
     />
     <link rel="stylesheet" href="styles.css" />
     <script src="https://unpkg.com/vue@3/dist/vue.global.js" defer></script>
-    <script src="app.js" defer></script>
+    <script src="app64.js" defer></script>
   </head>
   <body>
     <header>
@@ -21,6 +21,10 @@
       <input type="text" @input="saveInput">
       <button @click="setText">Set Text</button>
       <p>{{ message }}</p>
+    </section>
+    <section id="app2">
+      <!-- NOT WORK: <p> {{message}} </p>-->
+      <p>{{ favoriteMeal }}</p>
     </section>
   </body>
 </html>
