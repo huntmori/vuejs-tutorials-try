@@ -10,21 +10,25 @@
     />
     <link rel="stylesheet" href="styles.css" />
     <script src="https://unpkg.com/vue@3/dist/vue.global.js" defer></script>
-    <script src="app69.js" defer></script>
+    <script src="app.js" defer></script>
   </head>
   <body>
     <header>
-      <h1>Vue Behind The Scenes</h1>
+      <h1>FriendList</h1>
     </header>
     <section id="app">
-      <h2>How Vue Works</h2>
-      <input type="text" ref="userText">
-      <button @click="setText">Set Text</button>
-      <p>{{ message }}</p>
-    </section>
-    <section id="app2">
-      <!-- NOT WORK: <p> {{message}} </p>-->
-      <p>{{ favoriteMeal }}</p>
+      <ul>
+        <li v-for="friend in friends" :key="friend.id">
+          <h2>{{friend.name}}</h2>
+          <button @click="toggleDetails()">
+            {{ isVisibleDetail ? 'Hide': 'Show' }} Show Details
+          </button>
+          <ul v-if="isVisibleDetail">
+            <li><strong>Phone:</strong> {{friend.phone}} </li>
+            <li><strong>Email:</strong> {{ friend.email}} </li>
+          </ul>
+        </li>
+      </ul>
     </section>
   </body>
 </html>
