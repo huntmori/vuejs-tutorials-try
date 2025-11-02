@@ -39,7 +39,7 @@ app.component('friend-contact',{
     template: `
         <li>
             <h2>{{friend.name}}</h2>
-            <button @click="toggleDetails()">
+            <button v-on:click="toggleDetails">
                 {{ isVisibleDetail ? 'Hide': 'Show' }} Show Details
             </button>
             <ul v-if="isVisibleDetail">
