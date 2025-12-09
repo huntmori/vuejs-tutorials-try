@@ -6,11 +6,13 @@
     <ul>
       <friend-contact 
         v-for="friend in friends" 
+        :id="friend.id"
         :key="friend.id" 
         :name="friend.name"
         :phoneNumber="friend.phone"
         :emailAddress="friend.email"
-        :isFavorite="true"
+        :isFavorite="friend.isFavorite"
+        @toggle-favorite="toggleFavoriteState"
       />
     </ul>
   </section>
@@ -26,16 +28,26 @@ export default {
           name: "Manuel Lorenz",
           phone: "0123 45678 90",
           email: "manuel@localhost.com",
+          isFavorite: true
         },
         {
           id: "julie",
           name: "Julie Jones",
           phone: "0987 654421 21",
           email: "julie@localhost.com",
+          isFavorite: false
         },
       ],
     };
   },
+  methods: {
+    toggleFavoriteState(friendId) {
+      const firendIdx = this.friends.findIndex(f => f.id === friendId);
+      console.log('before toggle:', this.friends[firendIdx].isFavorite);
+      this.friends[firendIdx].isFavorite = !this.friends[firendIdx].isFavorite;
+      console.log('after toggle:', this.friends[firendIdx].isFavorite);
+    }
+  }
 };
 </script>
 
