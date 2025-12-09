@@ -20,9 +20,19 @@
 
 <script>
 export default {
-  props: [
-    'name', 'phoneNumber', 'emailAddress', 'isFavorite'
-  ],
+  props: {
+    name: { type: String, required: true },
+    phoneNumber: { type: String, required: true },
+    email: { type: String, required: true },
+    isFavorite: { 
+      type: String, 
+      required: false, 
+      default: '0',
+      validator(value) {
+        return value === '0' || value === '1';
+      }
+    },
+  },
   data() {
     return {
       detailsAreVisible: false,
