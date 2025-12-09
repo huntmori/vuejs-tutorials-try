@@ -1,6 +1,6 @@
 <template>
   <li>
-    <h2>{{ this.name }} {{ friendIsFavorite === '1' ? '★' : '' }}</h2>
+    <h2>{{ this.name }} {{ friendIsFavorite ? '★' : '' }}</h2>
     <button @click="toggleFavorite">
       toggle Favorite
     </button>
@@ -12,7 +12,7 @@
       </li>
       <li>
         <strong>Email:</strong>
-        {{ this.email }}
+        {{ this.emailAddress }}
       </li>
     </ul>
   </li>
@@ -23,14 +23,11 @@ export default {
   props: {
     name: { type: String, required: true },
     phoneNumber: { type: String, required: true },
-    email: { type: String, required: true },
+    emailAddress: { type: String, required: true },
     isFavorite: { 
-      type: String, 
+      type: Boolean, 
       required: false, 
-      default: '0',
-      validator(value) {
-        return value === '0' || value === '1';
-      }
+      default: false
     },
   },
   data() {
@@ -50,11 +47,7 @@ export default {
       this.detailsAreVisible = !this.detailsAreVisible;
     },
     toggleFavorite() {
-      if(this.friendIsFavorite === '1') {
-        this.friendIsFavorite = '0;'
-      } else {
-        this.friendIsFavorite = '1';
-      }
+      this.friendIsFavorite = !this.friendIsFavorite;
     }
   }
 };

@@ -8,10 +8,10 @@
         v-for="friend in friends" 
         :key="friend.id" 
         :name="friend.name"
-        :phone-number="friend.phone"
-        :email-address="friend.email"
-        :is-favorite="'1'"
-      ></friend-contact>
+        :phoneNumber="friend.phone"
+        :emailAddress="friend.email"
+        :isFavorite="true"
+      />
     </ul>
   </section>
 </template>
